@@ -14,6 +14,76 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n, row = 0, level = '') {
+
+    // BASE CASE TO STOP RECURSIVE FUNCTION
+    if (row === n) {
+        return;
+    }
+
+    // WHEN TO STOP FOR THE COLUMNS
+    if (level.length === (n * 2) - 1) {
+        console.log(level);
+        return pyramid(n, row + 1)
+    }
+
+    const midpoint = Math.floor((2 * n - 1) / 2);
+    let add;
+
+    if (midpoint - row <= level.length && midpoint + row >= level.length) {
+        add = '#';
+    } else {
+        add = ' ';
+    }
+
+    pyramid(n, row, level + add)
+
+}
+
 
 module.exports = pyramid;
+
+// first given solution
+// function pyramid(n) {
+//     const midpoint = Math.floor((2 * n - 1) / 2)
+//     for (let row = 0; row < n; row++) {
+//         let pyramid = ''
+//         for (let column = 0; column < (n * 2) - 1; column++) {
+//             if (midpoint - row <= column && midpoint + row >= column) {
+//                 pyramid += '#'
+//             } else {
+//                 pyramid += ' '
+//             }
+//         }
+//         console.log(pyramid)
+//     }
+
+// }
+
+
+// SECOND GIVEN SOLUTION
+// function pyramid(n, row = 0, level = '') {
+
+//     // BASE CASE TO STOP RECURSIVE FUNCTION
+//     if (row === n) {
+//         return;
+//     }
+
+//     // WHEN TO STOP FOR THE COLUMNS
+//     if (level.length === (n * 2) - 1) {
+//         console.log(level);
+//         return pyramid(n, row + 1)
+//     }
+
+//     const midpoint = Math.floor((2 * n - 1) / 2);
+//     let add;
+
+//     if (midpoint - row <= level.length && midpoint + row >= level.length) {
+//         add = '#';
+//     } else {
+//         add = ' ';
+//     }
+
+//     pyramid(n, row, level + add)
+
+// }
